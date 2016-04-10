@@ -1,0 +1,146 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nest_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/fab_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="05dp"
+            android:gravity="center"
+            android:text="Ngô Quang Đại"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="@dimen/size_text_name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profile_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_name"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="Bắc Giang, Việt Nam"
+            android:textSize="@dimen/size_text_body" />
+
+        <TextView
+            android:id="@+id/profile_about_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_place"
+            android:layout_marginBottom="15sp"
+            android:text="Chào các bạn, mình là Đại. Rất vui được làm quen với các bạn!"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="@dimen/size_text_body" />
+
+        <RelativeLayout
+            android:id="@+id/profile_row_name"
+            style="@style/row_profile"
+            android:layout_below="@+id/profile_about_me">
+
+            <TextView
+                android:id="@+id/gender"
+                style="@style/name_row_profile"
+                android:text="Gender" />
+
+            <TextView
+                android:id="@+id/profile_gender"
+                style="@style/content_row_profile"
+                android:text="Male" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line_gender"
+            style="@style/line_profile"
+            android:layout_below="@+id/profile_row_name" />
+
+        <RelativeLayout
+            android:id="@+id/profile_row_birth_date"
+            style="@style/row_profile"
+            android:layout_below="@+id/line_gender">
+
+            <TextView
+                android:id="@+id/birth_date"
+                style="@style/name_row_profile"
+                android:text="Birth Date" />
+
+            <TextView
+                android:id="@+id/profile_birth_date"
+                style="@style/content_row_profile"
+                android:text="03/10/1994" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line_profile"
+            style="@style/line_profile"
+            android:layout_below="@+id/profile_row_birth_date" />
+
+        <RelativeLayout
+            android:id="@+id/profile_row_email"
+            style="@style/row_profile"
+            android:layout_below="@+id/line_profile">
+
+            <TextView
+                android:id="@+id/email"
+                style="@style/name_row_profile"
+                android:text="Email" />
+
+            <TextView
+                android:id="@+id/profile_email"
+                style="@style/content_row_profile"
+                android:text="dainq57@gmail.com" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line_email"
+            style="@style/line_profile"
+            android:layout_below="@+id/profile_row_email" />
+
+        <RelativeLayout
+            android:id="@+id/profile_row_phone"
+            style="@style/row_profile"
+            android:layout_below="@+id/line_email">
+
+            <TextView
+                android:id="@+id/phone"
+                style="@style/name_row_profile"
+                android:text="Phone" />
+
+            <TextView
+                android:id="@+id/profile_phone"
+                style="@style/content_row_profile"
+                android:text="0979638606" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line_phone"
+            style="@style/line_profile"
+            android:layout_below="@+id/profile_row_phone" />
+
+        <RelativeLayout
+            android:id="@+id/profile_row_level"
+            style="@style/row_profile"
+            android:layout_below="@+id/line_phone">
+
+            <TextView
+                android:id="@+id/level"
+                style="@style/name_row_profile"
+                android:text="Level" />
+
+            <TextView
+                android:id="@+id/profile_level"
+                style="@style/content_row_profile"
+                android:text="5" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

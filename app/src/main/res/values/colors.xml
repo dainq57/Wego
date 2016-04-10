@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="textColorPrimary">#333333</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#FF5A5F</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorFaceBook">#3b5998</color>
+    <color name="colorTextGoogle">#6b6969</color>
+    <color name="colorTextHint">#b4b1b1</color>
+    <color name="colorTextBlack">#2e2e2e</color>
+</resources>

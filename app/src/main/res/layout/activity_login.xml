@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@raw/background">
+
+    <include layout="@layout/toolbar_wego"></include>
+
+    <TextView
+        android:id="@+id/tv_forgot_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edit_account_login"
+        android:layout_alignTop="@+id/tv_sign_up"
+        android:text="Forgot password?"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/size_text_button" />
+
+    <TextView
+        android:id="@+id/tv_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_account_login"
+        android:layout_alignEnd="@+id/edit_account_login"
+        android:layout_marginBottom="15dp"
+        android:text="Sign Up"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/size_text_button" />
+
+    <EditText
+        android:id="@+id/edit_account_login"
+        style="@style/edit_text"
+        android:layout_above="@+id/line"
+        android:background="@drawable/background_edit_text_top"
+        android:hint="Account"
+        android:inputType="textAutoComplete" />
+
+    <View
+        android:id="@+id/line"
+        style="@style/line"
+        android:layout_above="@+id/edit_password_login" />
+
+    <EditText
+        android:id="@+id/edit_password_login"
+        style="@style/edit_text"
+        android:layout_above="@+id/btn_login"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_edit_text_bottom"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <CheckedTextView
+        android:id="@+id/ctv_remeber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btn_login"
+        android:layout_marginLeft="9dp"
+        android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+        android:gravity="center"
+        style="@style/CheckBox"
+        android:text="Remember"
+        android:textColor="@color/colorText" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/button_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_weight="1"
+        android:text="@string/log_in" />
+</RelativeLayout>

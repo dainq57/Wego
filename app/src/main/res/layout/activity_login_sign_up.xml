@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@raw/background">
+
+    <include layout="@layout/toolbar_wego"></include>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_login_facebook"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="70dp"
+        android:gravity="center"
+        android:text="wego"
+        android:textColor="@color/colorText"
+        android:textSize="70dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_login_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/background_face"
+        android:text="@string/facebook"
+        android:textAllCaps="false"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/size_text_button" />
+
+    <Button
+        android:id="@+id/btn_login_google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_login_facebook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/background_google"
+        android:text="Google"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/size_text_button" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/btn_login_google"
+        android:layout_marginTop="31dp">
+
+        <Button
+            android:id="@+id/btn_sign_up_wego"
+            style="@style/button_activity_login"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="@string/sign_up" />
+
+        <Button
+            android:id="@+id/btn_login_wego"
+            style="@style/button_activity_login"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:text="@string/log_in" />
+    </TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:text="Copyright by Ngô Quang Đại - K57CC UET - 2016"
+        android:textColor="@color/colorText"
+        android:textStyle="italic" />
+
+</RelativeLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@raw/background">
+
+    <include layout="@layout/toolbar_wego"></include>
+
+    <TextView
+        android:id="@+id/tv_log_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_name_sign_up"
+        android:layout_alignEnd="@+id/edit_name_sign_up"
+        android:layout_marginBottom="15dp"
+        android:text="Log In"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/size_text_button" />
+
+    <EditText
+        android:id="@+id/edit_name_sign_up"
+        style="@style/edit_text"
+        android:layout_above="@+id/line1"
+        android:background="@drawable/background_edit_text_top"
+        android:hint="Name"
+        android:inputType="text" />
+
+    <View
+        android:id="@+id/line1"
+        style="@style/line"
+        android:layout_above="@+id/edit_email_sign_up" />
+
+    <EditText
+        android:id="@+id/edit_email_sign_up"
+        style="@style/edit_text"
+        android:layout_above="@+id/line2"
+        android:background="@drawable/background_edit_text_middle"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <View
+        android:id="@+id/line2"
+        style="@style/line"
+        android:layout_above="@+id/edit_account_sign_up" />
+
+    <EditText
+        android:id="@+id/edit_account_sign_up"
+        style="@style/edit_text"
+        android:layout_above="@+id/line3"
+        android:background="@drawable/background_edit_text_middle"
+        android:hint="Account"
+        android:inputType="textAutoComplete" />
+
+    <View
+        android:id="@+id/line3"
+        style="@style/line"
+        android:layout_above="@+id/edit_pass_sign_up" />
+
+    <EditText
+        android:id="@+id/edit_pass_sign_up"
+        style="@style/edit_text"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/background_edit_text_middle"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <View
+        android:id="@+id/line4"
+        style="@style/line"
+        android:layout_below="@+id/edit_pass_sign_up" />
+
+    <EditText
+        android:id="@+id/edit_confirm_pass_sign_up"
+        style="@style/edit_text"
+        android:layout_alignStart="@+id/line4"
+        android:layout_below="@+id/line4"
+        android:background="@drawable/background_edit_text_bottom"
+        android:hint="Confirm password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        style="@style/button_content"
+        android:layout_below="@+id/edit_confirm_pass_sign_up"
+        android:layout_marginTop="20dp"
+        android:text="@string/sign_up" />
+</RelativeLayout>
