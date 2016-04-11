@@ -37,8 +37,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private static final String UPDATE_PROFILE_URL = "http://uetour.16mb.com/app_tour/user/upDateProfile.php";
     private static final String TAG_INFO = "information";
 
+    private static final String TAG_USER_NAME = "username";
     private static final String TAG_NAME = "name";
-    private static final String TAG_DATE_OF_BIRTH = "dateofbirth";
+    private static final String TAG_DATE_OF_BIRTH = "birthday";
     private static final String TAG_GENDER = "gender";
     private static final String TAG_PLACE = "place";
     private static final String TAG_PHONE = "phone";
@@ -116,6 +117,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         btnUpdate.setOnClickListener(this);
 
         mDialogGender = new DialogGender();
+
+        Toast.makeText(EditProfileActivity.this, username, Toast.LENGTH_SHORT).show();
     }
 
     public void getInfoUser() throws JSONException {
@@ -148,11 +151,12 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private void updateProfile() {
         String name = editName.getText().toString();
         String aboutme = editAboutMe.getText().toString();
-        String date = tvDateOfBirth.getText().toString().toLowerCase();
         String place = editPlace.getText().toString();
         String phone = editPhone.getText().toString().toLowerCase().trim();
         String email = editEmail.getText().toString().toLowerCase().trim();
-        String gender = tvGender.toString();
+
+        String gender = tvGender.getText().toString();
+        String date = tvDateOfBirth.getText().toString();
         checkInfo(name, place, phone, email);
         if (isUpdate) {
             update(username, name, date, place, phone, email, gender, aboutme);
@@ -199,13 +203,14 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             @Override
             protected String doInBackground(String... params) {
                 HashMap<String, String> data = new HashMap<>();
-                data.put(TAG_NAME, params[0]);
-                data.put(TAG_GENDER, params[1]);
+                data.put(TAG_USER_NAME, params[0]);
+                data.put(TAG_NAME, params[1]);
                 data.put(TAG_DATE_OF_BIRTH, params[2]);
                 data.put(TAG_PLACE, params[3]);
                 data.put(TAG_PHONE, params[4]);
                 data.put(TAG_EMAIL, params[5]);
-                data.put(TAG_ABOUT_ME, params[6]);
+                data.put(TAG_GENDER, params[6]);
+                data.put(TAG_ABOUT_ME, params[7]);
 
                 return ruc.sendPostRequest(UPDATE_PROFILE_URL, data);
             }
