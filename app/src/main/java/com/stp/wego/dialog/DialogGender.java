@@ -1,8 +1,6 @@
 package com.stp.wego.dialog;
 
-import android.app.Activity;
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,9 +11,9 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.stp.wego.R;
+import com.stp.wego.interfaces.SelectGenderListener;
 
 public class DialogGender extends DialogFragment implements View.OnClickListener {
-    private static final String TAG_GENDER = "gender";
     RadioButton rbMale, rbFeMale, rbOther;
 
     @Nullable
@@ -36,9 +34,6 @@ public class DialogGender extends DialogFragment implements View.OnClickListener
         return view;
     }
 
-    public static interface SelectGenderListener {
-        public abstract void onComplete(String gender);
-    }
 
     @Override
     public void onClick(View v) {
