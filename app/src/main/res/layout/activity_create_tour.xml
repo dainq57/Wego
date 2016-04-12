@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+            <RelativeLayout
+                android:id="@+id/content_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/edit_profile_ava"
+                android:padding="@dimen/fab_margin">
+
+
+                <TextView
+                    android:id="@+id/location_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="From: " />
+
+                <TextView
+                    android:id="@+id/location_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/location_from"
+                    android:gravity="center_vertical"
+                    android:text="To: " />
+
+                <TextView
+                    android:id="@+id/tv_distance_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/location_to"
+                    android:gravity="center_vertical" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_update_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_button_no_radius"
+                android:text="@string/create"
+                android:textAllCaps="false"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/size_text_button" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

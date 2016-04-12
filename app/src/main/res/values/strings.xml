@@ -137,4 +137,16 @@
     <string name="place">Place</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
+    <string name="about_me_tag">About me</string>
+    <string name="my_tour_tag">My tour</string>
+    <string name="update_success">Updated successfully</string>
+    <string name="for_got_pass">Forgot password?</string>
+    <string name="sign_up_login">Sign Up</string>
+    <string name="account_login">Account</string>
+    <string name="pass_login">Password</string>
+    <string name="remember_login">Remember</string>
+    <string name="for_got">Forgot Password?</string>
+    <string name="your_email">Your email</string>
+    <string name="title_activity_create_tour">CreateTourActivity</string>
+    <string name="create">CREATE</string>
 </resources>

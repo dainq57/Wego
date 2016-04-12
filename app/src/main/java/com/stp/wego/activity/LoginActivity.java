@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static final String PREF_USERNAME = "username";
     public static final String PREF_PASSWORD = "password";
 
-
+    private TextView tvForgotPass;
     private EditText editTextUserName, editTextPassword;
     private CheckedTextView ctvRemember;
 
@@ -55,6 +55,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         TextView tvSignUp = (TextView) findViewById(R.id.tv_sign_up);
         tvSignUp.setOnClickListener(this);
+
+        tvForgotPass = (TextView) findViewById(R.id.tv_forgot_pass);
+        tvForgotPass.setOnClickListener(this);
 
         editTextUserName = (EditText) findViewById(R.id.edit_account_login);
         editTextPassword = (EditText) findViewById(R.id.edit_password_login);
@@ -91,7 +94,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 } else if (!ctvRemember.isChecked()) {
                     forgetUser();
                 }
-                login();
+                isLogin();
+//                login();
                 break;
             case R.id.tv_sign_up:
                 Intent signup = new Intent(LoginActivity.this, SignUpActivity.class);
@@ -104,6 +108,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     ctvRemember.setChecked(true);
                 }
+                break;
+            case R.id.tv_forgot_pass:
+                Intent forgot = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                forgot.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(forgot);
                 break;
             default:
                 break;
@@ -144,6 +153,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         editTextUserName.setText(user);
         editTextPassword.setText(pass);
+
+        editTextUserName.setSelection(user.length());
+        editTextPassword.setSelection(pass.length());
     }
 
     private void getInfo() {

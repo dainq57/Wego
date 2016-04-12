@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,22 +22,18 @@ import android.widget.Toast;
 
 import com.stp.wego.R;
 import com.stp.wego.dialog.DialogGender;
-import com.stp.wego.model.User;
-import com.stp.wego.support.InfomationJSONParse;
 import com.stp.wego.support.MakeHttpRequest;
+import com.stp.wego.interfaces.SelectGenderListener;
 import com.stp.wego.support.UserSessionManager;
-
-import org.json.JSONException;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener, DialogGender.SelectGenderListener {
+public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener,
+        SelectGenderListener {
     private static final String UPDATE_PROFILE_URL = "http://uetour.16mb.com/app_tour/user/upDateProfile.php";
-    private static final String TAG_INFO = "information";
-
     private static final String TAG_USER_NAME = "username";
     private static final String TAG_NAME = "name";
     private static final String TAG_DATE_OF_BIRTH = "birthday";
@@ -103,9 +100,23 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         editPlace = (EditText) findViewById(R.id.edit_profile_place);
         editPhone = (EditText) findViewById(R.id.edit_profile_phone);
         editEmail = (EditText) findViewById(R.id.edit_profile_email);
-
         tvGender = (TextView) findViewById(R.id.edit_profile_gender);
         tvDateOfBirth = (TextView) findViewById(R.id.edit_profile_birth_date);
+
+        Intent profile = getIntent();
+        editName.setText(profile.getStringExtra(TAG_NAME));
+        editAboutMe.setText(profile.getStringExtra(TAG_ABOUT_ME));
+        editPlace.setText(profile.getStringExtra(TAG_PLACE));
+        editPhone.setText(profile.getStringExtra(TAG_PHONE));
+        editEmail.setText(profile.getStringExtra(TAG_EMAIL));
+        tvDateOfBirth.setText(profile.getStringExtra(TAG_DATE_OF_BIRTH));
+        tvGender.setText(profile.getStringExtra(TAG_GENDER));
+
+        editName.setSelection(editName.length());
+        editAboutMe.setSelection(editAboutMe.length());
+        editPlace.setSelection(editPlace.length());
+        editPhone.setSelection(editPhone.length());
+        editEmail.setSelection(editEmail.length());
 
         RelativeLayout rowDateOfBirth = (RelativeLayout) findViewById(R.id.edit_profile_row_date_birth);
         rowDateOfBirth.setOnClickListener(this);
@@ -117,22 +128,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         btnUpdate.setOnClickListener(this);
 
         mDialogGender = new DialogGender();
-
-        Toast.makeText(EditProfileActivity.this, username, Toast.LENGTH_SHORT).show();
-    }
-
-    public void getInfoUser() throws JSONException {
-        Intent intent = getIntent();
-        String inforUser = intent.getStringExtra(TAG_INFO);
-        InfomationJSONParse mInfo = new InfomationJSONParse();
-        User mUser = new User();
-        mInfo.createData(inforUser, mUser);
-
-        editName.setText(mUser.getmName());
-        tvDateOfBirth.setText(mUser.getmDateOfBirth());
-        editPlace.setText(mUser.getmPlace());
-        editPhone.setText(mUser.getmPhone());
-        editEmail.setText(mUser.getmEmail());
     }
 
     public void initDialog() {
@@ -149,15 +144,17 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void updateProfile() {
-        String name = editName.getText().toString();
-        String aboutme = editAboutMe.getText().toString();
-        String place = editPlace.getText().toString();
+        String name = editName.getText().toString().trim();
+        String aboutme = editAboutMe.getText().toString().trim();
+        String place = editPlace.getText().toString().trim();
         String phone = editPhone.getText().toString().toLowerCase().trim();
         String email = editEmail.getText().toString().toLowerCase().trim();
 
-        String gender = tvGender.getText().toString();
-        String date = tvDateOfBirth.getText().toString();
+        String gender = tvGender.getText().toString().trim();
+        String date = tvDateOfBirth.getText().toString().toLowerCase().trim();
         checkInfo(name, place, phone, email);
+
+        Log.e("INFORMATION: ", name + " " + gender + " " + place + " " + aboutme);
         if (isUpdate) {
             update(username, name, date, place, phone, email, gender, aboutme);
         }
@@ -175,7 +172,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void update(String username, String name, String date, String place, String phone, String email, String gender, String aboutme) {
+    private void update(String username, String name, String date, String place, String phone,
+                        String email, String gender, String aboutme) {
         class UpdateProfile extends AsyncTask<String, Void, String> {
             ProgressDialog loading;
             MakeHttpRequest ruc = new MakeHttpRequest();
@@ -193,7 +191,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 if (loading.isShowing()) {
                     loading.dismiss();
                 }
-                if (s.equalsIgnoreCase("success")) {
+                if (s.equalsIgnoreCase(getString(R.string.update_success))) {
                     onBackPressed();
                 } else {
                     Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
@@ -216,8 +214,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             }
         }
 
-        UpdateProfile registerUser = new UpdateProfile();
-        registerUser.execute(username, name, date, place, phone, email, gender, aboutme);
+        UpdateProfile updateProfile = new UpdateProfile();
+        updateProfile.execute(username, name, date, place, phone, email, gender, aboutme);
     }
 
     @Override
